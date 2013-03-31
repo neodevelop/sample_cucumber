@@ -2,6 +2,7 @@ class CodeBreaker
 
   def initialize(secretCode)
     @secretCode = secretCode
+    @numberOfTries = 0
   end
 
   def guessWith(guessCode)
@@ -23,6 +24,16 @@ class CodeBreaker
         end
       end
     end
+    @numberOfTries+=1
     r
   end
+  
+  def status
+    if @numberOfTries < 12
+      "Try again!"
+    else
+      "You lose!"
+    end
+  end
+
 end

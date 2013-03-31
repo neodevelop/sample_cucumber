@@ -40,4 +40,25 @@ describe CodeBreaker do
     r.should eq("E")
   end
 
+  it "When I try to guess 2 times and ask for the status game the resul it 'Try again!'" do
+    2.times do |t|
+      @game.guessWith("1234")
+    end
+    status = @game.status
+    status.should eq("Try again!")
+  end
+
+  it "When I try to guess 12 times and ask for the status game the resul it 'You lose!'" do
+    12.times do |t|
+      @game.guessWith("1234")
+    end
+    status = @game.status
+    status.should eq("You lose!")
+  end
+
+  it "When the secret code is 9172 and try to guess with 9172 the result is 'XXXX'" do
+    r = @game.guessWith("9172")
+    r.should eq("XXXX")
+  end
+  
 end
