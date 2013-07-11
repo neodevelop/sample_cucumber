@@ -59,6 +59,8 @@ describe CodeBreaker do
   it "When the secret code is 9172 and try to guess with 9172 the result is 'XXXX'" do
     r = @game.guessWith("9172")
     r.should eq("XXXX")
+    status = @game.status
+    status.should eq("You won!")
   end
   
 end

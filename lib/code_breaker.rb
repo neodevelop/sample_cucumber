@@ -1,8 +1,12 @@
 class CodeBreaker
 
+  attr_accessor :status
+
   def initialize(secretCode)
     @secretCode = secretCode
     @numberOfTries = 0
+    @guessed = false
+    @status = ''
   end
 
   def guessWith(guessCode)
@@ -24,15 +28,21 @@ class CodeBreaker
         end
       end
     end
-    @numberOfTries+=1
+    @guessed = true if r == "XXXX"
+    @numberOfTries += 1
+    check()
     r
   end
   
-  def status
-    if @numberOfTries < 12
-      "Try again!"
+  def check
+    if @guessed then 
+      @status = "You won!"
     else
-      "You lose!"
+      if @numberOfTries < 12  
+        @status = "Try again!"
+      else
+        @status = "You lose!"
+      end
     end
   end
 
