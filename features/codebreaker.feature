@@ -7,3 +7,4 @@ Feature: Play the codebreaker game
   Scenario: "Show the input space to start the game"
     Given I am viewing "/"
     Then I should see "Start to play" 
+    And I should be prepared to enter a number

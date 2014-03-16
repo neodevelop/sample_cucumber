@@ -8,10 +8,10 @@ require 'rack/test'
 require 'webrat'
 
 Webrat.configure do |config|
-    config.mode = :rack
+  config.mode = :rack
 end
 
-class MyWorld
+class WebratMixinExample
   include Rack::Test::Methods
   include Webrat::Methods
   include Webrat::Matchers
@@ -23,4 +23,4 @@ class MyWorld
   end
 end
 
-World{MyWorld.new}
+World{WebratMixinExample.new}
