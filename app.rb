@@ -7,3 +7,8 @@ end
 get '/' do
   erb :index
 end
+
+post '/play' do
+  @status = "Try again!"
+  erb :index
+end

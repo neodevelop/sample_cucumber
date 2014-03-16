@@ -3,10 +3,11 @@
   <title></title>
   <body>
     <h1>Start to play!</h1>
-    <form>
+    <form action="play" method="post">
       <label>Adivina el código:</label>
       <input type="text" id="guess_number" name="guess_number" />
-      <input type="submit" value="Jugar" />
+      <input type="submit" value="Play" name="play"/>
     </form>
+    <h2><%= @status %></h2>
   </body>
 </html>
