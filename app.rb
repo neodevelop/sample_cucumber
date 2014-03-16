@@ -1,5 +1,9 @@
 require 'sinatra'
 
-get '/hi' do
-  "Hola mundo!"
+configure do
+  set :views, "#{File.dirname(__FILE__)}/views"
+end
+
+get '/' do
+  "Start to play"
 end
