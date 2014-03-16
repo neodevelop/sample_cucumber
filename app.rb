@@ -5,5 +5,5 @@ configure do
 end
 
 get '/' do
-  "Start to play"
+  erb :index
 end
