@@ -14,7 +14,8 @@ describe CodeBreaker do
     %w( 0915 ** ),
     %w( 9175 XXX ),
     %w( 2915 *** ),
-    %w( 9912 E )
+    %w( 9912 E ),
+    %w( 9172 XXXX )
   ].each do | guess_number, result |
     it %{ When the secret code is #{@secret_code} 
           and try to guess with #{guess_number} 
@@ -24,27 +25,19 @@ describe CodeBreaker do
     end
   end
 
-  it "When I try to guess 2 times and ask for the status game the resul it 'Try again!'" do
-    2.times do |t|
-      @game.guessWith("1234")
+  [
+    [ 2 ,"1234","Try again!" ],
+    [ 12,"1234","You lose!"  ],
+    [ 1 ,"9172","You won!"  ]
+  ].each do | attempts, guess_number, expected_status |
+    it %{ When I try to guess #{attempts} 
+          times and ask for the status game 
+          the resul it '#{expected_status}' } do
+      attempts.times do |t|
+        @game.guessWith(guess_number)
+      end
+      @game.status.should eq(expected_status)
     end
-    status = @game.status
-    status.should eq("Try again!")
-  end
-
-  it "When I try to guess 12 times and ask for the status game the resul it 'You lose!'" do
-    12.times do |t|
-      @game.guessWith("1234")
-    end
-    status = @game.status
-    status.should eq("You lose!")
-  end
-
-  it "When the secret code is 9172 and try to guess with 9172 the result is 'XXXX'" do
-    r = @game.guessWith("9172")
-    r.should eq("XXXX")
-    status = @game.status
-    status.should eq("You won!")
   end
   
 end
