@@ -15,7 +15,8 @@ describe CodeBreaker do
     %w( 9175 XXX ),
     %w( 2915 *** ),
     %w( 9912 E ),
-    %w( 9172 XXXX )
+    %w( 9172 XXXX ),
+    %w( 9012 XXXX )
   ].each do | guess_number, result |
     it %{ When the secret code is #{@secret_code}
           and try to guess with #{guess_number}
